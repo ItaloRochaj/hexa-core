@@ -9,4 +9,6 @@ public interface PedidoServicePort {
     Pedido criar(Pedido pedido);
     List<Pedido> listarTodos();
     Optional<Pedido> buscarPorId(Long id);
+    Pedido atualizar(Pedido pedido);
+    void deletar(Long id);
 }
