@@ -42,4 +42,34 @@ public class CreatePedidoUseCase implements PedidoServicePort {
 
     @Override
     public Optional<Pedido> buscarPorId(Long id) { return pedidoRepository.findById(id); }
+
+    @Override
+    public Pedido atualizar(Pedido pedido) {
+        if (pedido == null || pedido.getId() == null) throw new IllegalArgumentException("id do pedido é obrigatório");
+        // garante existência
+        var existente = pedidoRepository.findById(pedido.getId()).orElseThrow(() -> new IllegalArgumentException("Pedido não encontrado"));
+
+        if (pedido.getClienteId() == null) throw new IllegalArgumentException("clienteId obrigatório");
+        if (pedido.getValor() == null || pedido.getValor().compareTo(BigDecimal.ZERO) <= 0)
+            throw new IllegalArgumentException("valor inválido");
+
+        // aplica mesma regra de desconto
+        if (pedido.getValor().compareTo(BigDecimal.valueOf(100)) >= 0) {
+            BigDecimal desconto = pedido.getValor().multiply(BigDecimal.valueOf(0.10));
+            pedido.setValor(pedido.getValor().subtract(desconto));
+        }
+
+        // preserva criadoEm e status do existente
+        pedido.setCriadoEm(existente.getCriadoEm());
+        pedido.setStatus(existente.getStatus());
+
+        return pedidoRepository.save(pedido);
+    }
+
+    @Override
+    public void deletar(Long id) {
+        // garante que exista
+        pedidoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Pedido não encontrado"));
+        pedidoRepository.deleteById(id);
+    }
 }
