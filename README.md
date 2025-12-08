@@ -415,34 +415,15 @@ chore: tarefas de manutenção
 
 ---
 
-## 📜 Licença
-
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## 👨‍💻 Autor
-
-**Seu Nome**
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [seu-perfil](https://linkedin.com/in/seu-perfil)
-- Email: seu-email@exemplo.com
-
----
-
-## 🙏 Agradecimentos
-
-- **Alistair Cockburn** - Criador da Arquitetura Hexagonal
-- **Robert C. Martin** - Princípios SOLID
-- **Spring Team** - Framework incrível
-- **Comunidade Java** - Suporte contínuo
-
----
-
-<div align="center">
-
-**⭐ Se este projeto te ajudou, deixe uma estrela! ⭐**
-
-[⬆ Voltar ao topo](#️-hexa-core-api---arquitetura-hexagonal)
-
-</div>
+### 👨🏻‍💻 Autor:
+<table style="border=0">
+  <tr>
+    <td align="left">
+      <a href="https://github.com/ItaloRochaj">
+        <span><b>Italo Rocha</b></span>
+      </a>
+      <br>
+      <span>Full-Stack Development</span>
+    </td>
+  </tr>
+</table>
