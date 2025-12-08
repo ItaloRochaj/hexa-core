@@ -16,7 +16,7 @@ public class SwaggerApiConfig {
                         .title("API Hexagonal - POC")
                         .description("Projeto demonstrando arquitetura hexagonal e SOLID")
                         .version("1.0")
-                        .contact(new Contact().name("Seu Nome").email("email@teste.com"))
+                        .contact(new Contact().name("Italo Rocha").email("email@teste.com"))
                 );
     }
 }
