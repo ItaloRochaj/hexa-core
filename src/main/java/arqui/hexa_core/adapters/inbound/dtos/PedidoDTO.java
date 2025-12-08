@@ -25,4 +25,3 @@ public class PedidoDTO {
     public BigDecimal getValor() { return valor; }
     public void setValor(BigDecimal valor) { this.valor = valor; }
 }
-
