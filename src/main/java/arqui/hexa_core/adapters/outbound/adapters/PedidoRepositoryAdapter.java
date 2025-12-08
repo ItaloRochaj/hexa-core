@@ -34,6 +34,11 @@ public class PedidoRepositoryAdapter implements PedidoRepositoryPort {
         return jpa.findById(id).map(this::toDomain);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        jpa.deleteById(id);
+    }
+
     private Pedido toDomain(PedidoEntity e) {
         if (e == null) return null;
         return new Pedido(e.getId(), e.getClienteId(), e.getValor(), e.getStatus(), e.getCriadoEm());
@@ -50,4 +55,3 @@ public class PedidoRepositoryAdapter implements PedidoRepositoryPort {
         return e;
     }
 }
-

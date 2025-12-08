@@ -33,6 +33,11 @@ public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
         return jpa.findAll().stream().map(this::toDomain).collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteById(Long id) {
+        jpa.deleteById(id);
+    }
+
     private Cliente toDomain(ClienteEntity e) {
         if (e == null) return null;
         return new Cliente(e.getId(), e.getNome(), e.getEmail(), e.getTelefone());
