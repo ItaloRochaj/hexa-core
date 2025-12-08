@@ -1,4 +1,8 @@
 package arqui.hexa_core.adapters.outbound.repositories;
 
-public interface ClienteJpaRepository {
+import arqui.hexa_core.adapters.outbound.entities.ClienteEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClienteJpaRepository  extends JpaRepository <ClienteEntity, Long> {
+
 }
