@@ -9,4 +9,5 @@ public interface PedidoRepositoryPort {
     Pedido save(Pedido pedido);
     List<Pedido> findAll();
     Optional<Pedido> findById(Long id);
+    void deleteById(Long id);
 }

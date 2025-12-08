@@ -9,4 +9,5 @@ public interface ClienteRepositoryPort {
     Cliente save(Cliente cliente);
     Optional<Cliente> findById(Long id);
     List<Cliente> findAll();
+    void deleteById(Long id);
 }
