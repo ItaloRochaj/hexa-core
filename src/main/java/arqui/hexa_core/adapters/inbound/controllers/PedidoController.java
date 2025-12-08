@@ -1,8 +1,7 @@
 package arqui.hexa_core.adapters.inbound.controllers;
 
 import arqui.hexa_core.adapters.inbound.dtos.PedidoDTO;
-import arqui.hexa_core.core.domain.Pedido;
-import arqui.hexa_core.core.ports.inbound.PedidoServicePort;
+import arqui.hexa_core.services.PedidoServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,41 +13,38 @@ import java.util.List;
 @RequestMapping("/api/pedidos")
 public class PedidoController {
 
-    private final PedidoServicePort pedidoService;
+    private final PedidoServiceImpl pedidoService;
 
-    public PedidoController(PedidoServicePort pedidoService) {
+    public PedidoController(PedidoServiceImpl pedidoService) {
         this.pedidoService = pedidoService;
     }
 
     @PostMapping
     public ResponseEntity<PedidoDTO> criar(@RequestBody @Valid PedidoDTO dto) {
-        Pedido domain = toDomain(dto);
-        Pedido salvo = pedidoService.criar(domain);
-        PedidoDTO resp = toDto(salvo);
-        return ResponseEntity.created(URI.create("/api/pedidos/" + salvo.getId())).body(resp);
+        PedidoDTO salvo = pedidoService.criar(dto);
+        return ResponseEntity.created(URI.create("/api/pedidos/" + salvo.getId())).body(salvo);
     }
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> listar() {
-        return ResponseEntity.ok(pedidoService.listarTodos());
+    public ResponseEntity<List<PedidoDTO>> listar() {
+        return ResponseEntity.ok(pedidoService.listar());
     }
 
-    // mapeamentos
-    private Pedido toDomain(PedidoDTO dto) {
-        if (dto == null) return null;
-        Pedido p = new Pedido();
-        p.setId(dto.getId());
-        p.setClienteId(dto.getClienteId());
-        p.setValor(dto.getValor());
-        return p;
+    @GetMapping("/{id}")
+    public ResponseEntity<PedidoDTO> buscar(@PathVariable Long id) {
+        PedidoDTO dto = pedidoService.buscarPorId(id);
+        return dto != null ? ResponseEntity.ok(dto) : ResponseEntity.notFound().build();
     }
 
-    private PedidoDTO toDto(Pedido p) {
-        if (p == null) return null;
-        PedidoDTO dto = new PedidoDTO();
-        dto.setId(p.getId());
-        dto.setClienteId(p.getClienteId());
-        dto.setValor(p.getValor());
-        return dto;
+    @PutMapping("/{id}")
+    public ResponseEntity<PedidoDTO> atualizar(@PathVariable Long id, @RequestBody @Valid PedidoDTO dto) {
+        PedidoDTO atualizado = pedidoService.atualizar(id, dto);
+        return ResponseEntity.ok(atualizado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        pedidoService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 }
