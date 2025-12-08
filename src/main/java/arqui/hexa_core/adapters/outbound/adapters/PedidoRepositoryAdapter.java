@@ -4,11 +4,13 @@ import arqui.hexa_core.adapters.outbound.entities.PedidoEntity;
 import arqui.hexa_core.adapters.outbound.repositories.PedidoJpaRepository;
 import arqui.hexa_core.core.domain.Pedido;
 import arqui.hexa_core.core.ports.outbound.PedidoRepositoryPort;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class PedidoRepositoryAdapter implements PedidoRepositoryPort {
 
     private final PedidoJpaRepository jpa;
