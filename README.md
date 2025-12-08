@@ -153,7 +153,6 @@ docker-compose up -d db pgadmin
 ### 4️⃣ Verificar se está funcionando
 
 - **API Swagger**: http://localhost:8080/swagger-ui.html
-- **Health Check**: http://localhost:8080/actuator/health
 - **PgAdmin**: http://localhost:5050 (admin@admin.com / admin)
 
 ---
