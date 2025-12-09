@@ -192,10 +192,10 @@ Porta: 5432
 
 | Método | Endpoint | Descrição | Corpo |
 |--------|----------|-----------|-------|
-| `POST` | `/api/clientes` | Criar cliente | `{"nome":"João","email":"joao@email.com","telefone":"11999999999"}` |
+| `POST` | `/api/clientes` | Criar cliente | `{"nome":"Italo Rocha","email":"italo@email.com","telefone":"11999999999"}` |
 | `GET` | `/api/clientes` | Listar todos | - |
 | `GET` | `/api/clientes/{id}` | Buscar por ID | - |
-| `PUT` | `/api/clientes/{id}` | Atualizar | `{"nome":"João Silva","email":"joao@email.com","telefone":"11888888888"}` |
+| `PUT` | `/api/clientes/{id}` | Atualizar | `{"nome":"Italo Rocha","email":"italo@email.com","telefone":"11888888888"}` |
 | `DELETE` | `/api/clientes/{id}` | Deletar | - |
 
 ### 🛒 Pedidos (`/api/pedidos`)
@@ -245,7 +245,7 @@ Porta: 5432
 # Criar Cliente
 curl -X POST http://localhost:8080/api/clientes \
   -H "Content-Type: application/json" \
-  -d '{"nome":"João Silva","email":"joao@email.com","telefone":"11999999999"}'
+  -d '{"nome":"Italo Rocha","email":"italo@email.com","telefone":"11999999999"}'
 
 # Criar Pedido (com desconto)
 curl -X POST http://localhost:8080/api/pedidos \
